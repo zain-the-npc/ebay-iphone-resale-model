@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1BOK7hYrHXiOpq8HRxXO6407g7Sk-FHIC
 """
 
-iPhone-11-pro-max-price-regression
 
 import pandas as pd
 import numpy as np
@@ -21,7 +20,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("/content/ebay_iphone_11_pro_max.csv")
+df = pd.read_csv("ebay_iphone_11_pro_max.csv")
 
 """cleaning and pre-processing."""
 
@@ -292,13 +291,7 @@ def predict_price(ridge_model):
         storage = int(input("Storage (e.g. 64 / 128 / 256 / 512): ").strip())
         condition_input = input("Condition (New / Used / Refurbished): ").strip()
         color_input = input("Color (e.g. Space Gray / Silver / Gold): ").strip()
-
-        # Taking inputs for features NOT used in the model (for user completeness)
-        _ = float(input("Battery health percentage (e.g. 85-100): ").strip())
-        _ = float(input("Seller rating (e.g. 4.5): ").strip())
-
         is_unlocked_input = input("Is it unlocked? (Yes / No): ").strip()
-        _ = int(input("Age in months (e.g. 12, 18, 24): ").strip())
 
     except Exception as e:
         print(f"\n--- Input Error: {e}. Please check your input format. ---")
@@ -325,5 +318,5 @@ def predict_price(ridge_model):
     print(f"Your iPhone 11 Pro Max ({storage}GB, {condition_processed.title()}, {color_processed.title()}) ≈ **${predicted_price:.2f}**")
 
 
-# # You would call this in your local environment after training the model:
+# You would call this in your local environment after training the model:
 predict_price(ridge_model)
